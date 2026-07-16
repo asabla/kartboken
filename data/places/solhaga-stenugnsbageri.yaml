@@ -1,0 +1,28 @@
+id: solhaga-stenugnsbageri
+name: Solhaga Stenugnsbageri
+status: published
+categories: [cafe, bakery]
+journeyValue: detour
+location:
+  address: Ågatan 2, 311 68 Slöinge
+  locality: Slöinge
+  region: Halland
+  country: SE
+  coordinates:
+    longitude: 12.690278167096448
+    latitude: 56.8515528443482
+summary: Stenugnsbageri och trädgårdskafé i Slöinge med bröd, bakverk och brödbaserade måltider, rekommenderat som stopp i Falkenbergstrakten.
+tags: [fika, surdeg, bröd, bakverk]
+sources:
+  - kind: recommendation
+    url: https://www.reddit.com/r/sweden/comments/1uxul7k/comment/oxu8dhk/
+    label: Reddit-rekommendation
+    checkedAt: 2026-07-16
+  - kind: official
+    url: https://solhagastenugnsbageri.se/
+    label: Officiell webbplats
+    checkedAt: 2026-07-16
+  - kind: geodata
+    url: https://www.hitta.se/omr%C3%A5de/56.8515528443482%3A12.690278167096448
+    label: Hitta.se geodata
+    checkedAt: 2026-07-16

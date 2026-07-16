@@ -14,6 +14,38 @@
     "summary",
     "sources"
   ],
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "published" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "sources": {
+            "allOf": [
+              {
+                "type": "array",
+                "contains": {
+                  "type": "object",
+                  "properties": { "kind": { "const": "recommendation" } },
+                  "required": ["kind"]
+                }
+              },
+              {
+                "type": "array",
+                "contains": {
+                  "type": "object",
+                  "properties": { "kind": { "const": "official" } },
+                  "required": ["kind"]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -35,8 +67,9 @@
     "location": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["locality", "region", "country", "coordinates"],
+      "required": ["address", "locality", "region", "country", "coordinates"],
       "properties": {
+        "address": { "type": "string", "minLength": 1, "maxLength": 240 },
         "locality": { "type": "string", "minLength": 1, "maxLength": 120 },
         "region": { "type": "string", "minLength": 1, "maxLength": 120 },
         "country": { "const": "SE" },
@@ -63,8 +96,9 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["url", "label", "checkedAt"],
+        "required": ["kind", "url", "label", "checkedAt"],
         "properties": {
+          "kind": { "enum": ["recommendation", "official", "geodata"] },
           "url": { "type": "string", "format": "uri" },
           "label": { "type": "string", "minLength": 1, "maxLength": 160 },
           "checkedAt": { "type": "string", "format": "date" }
@@ -73,4 +107,3 @@
     }
   }
 }
-

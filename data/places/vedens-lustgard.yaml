@@ -1,0 +1,29 @@
+id: vedens-lustgard
+name: Vedens Lustgård
+status: published
+categories: [restaurant]
+journeyValue: detour
+location:
+  address: Skånings-Åsaka Kartegården 2, 532 96 Skara
+  locality: Skara
+  region: Västra Götaland
+  country: SE
+  coordinates:
+    longitude: 13.464316
+    latitude: 58.426003
+summary: Vedugnspizzeria i en restaurerad lada på Skaraslätten, med fokus på lokala råvaror och mozzarella från gårdens eget mejeri.
+tags: [pizza, vedugn, lokala råvaror, gård]
+sources:
+  - kind: recommendation
+    url: https://www.reddit.com/r/sweden/comments/1uxul7k/comment/oxuamzy/
+    label: Reddit-rekommendation
+    checkedAt: 2026-07-16
+  - kind: official
+    url: https://vedenslustgard.com/
+    label: Officiell webbplats
+    checkedAt: 2026-07-16
+  - kind: geodata
+    url: https://www.hitta.se/v%C3%A4stra%2Bg%C3%B6talands%2Bl%C3%A4n/skara/sk%C3%A5nings%2B%C3%A5saka%2Bkarteg%C3%A5rden%2B2/omr%C3%A5de/58.426003%3A13.464316
+    label: Hitta.se geodata
+    checkedAt: 2026-07-16
+

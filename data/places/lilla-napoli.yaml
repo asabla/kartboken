@@ -1,0 +1,25 @@
+id: lilla-napoli
+name: Lilla Napoli
+status: published
+categories: [restaurant]
+journeyValue: journey
+location:
+  address: Halmstadvägen 1, 311 45 Falkenberg
+  locality: Falkenberg
+  region: Halland
+  country: SE
+  coordinates:
+    longitude: 12.5016073
+    latitude: 56.9022319
+summary: Pizzeria i Falkenberg med en egen tolkning av napolitansk pizza, rekommenderad i tråden som värd en resa.
+tags: [pizza, napolitanskt]
+sources:
+  - kind: recommendation
+    url: https://www.reddit.com/r/sweden/comments/1uxul7k/comment/oxu5my9/
+    label: Reddit-rekommendation
+    checkedAt: 2026-07-16
+  - kind: official
+    url: https://www.lillanapoli.se/
+    label: Officiell webbplats
+    checkedAt: 2026-07-16
+

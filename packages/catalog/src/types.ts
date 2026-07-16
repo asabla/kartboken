@@ -16,6 +16,7 @@ export const journeyValues = ["nearby", "stop", "detour", "journey"] as const;
 export type JourneyValue = (typeof journeyValues)[number];
 
 export interface PlaceSource {
+  kind: "recommendation" | "official" | "geodata";
   url: string;
   label: string;
   checkedAt: string;
@@ -28,6 +29,7 @@ export interface Place {
   categories: PlaceCategory[];
   journeyValue: JourneyValue;
   location: {
+    address: string;
     locality: string;
     region: string;
     country: "SE";
@@ -40,4 +42,3 @@ export interface Place {
   tags?: string[];
   sources: PlaceSource[];
 }
-

@@ -1,0 +1,29 @@
+id: golden-crown
+name: Golden Crown
+status: published
+categories: [restaurant]
+journeyValue: detour
+location:
+  address: Storgatan 20, 233 31 Svedala
+  locality: Svedala
+  region: Skåne
+  country: SE
+  coordinates:
+    longitude: 13.236533363984595
+    latitude: 55.508464241367626
+summary: Kinesisk restaurang i Svedala där rekommendationerna i tråden särskilt lyfter Sichuanrätterna.
+tags: [sichuan, kinesiskt, stark mat]
+sources:
+  - kind: recommendation
+    url: https://www.reddit.com/r/sweden/comments/1uxul7k/comment/oxuf51c/
+    label: Reddit-rekommendation
+    checkedAt: 2026-07-16
+  - kind: official
+    url: https://goldencrown1.weebly.com/contact.html
+    label: Officiell webbplats
+    checkedAt: 2026-07-16
+  - kind: geodata
+    url: https://www.hitta.se/omr%C3%A5de/55.508464241367626%3A13.236533363984595
+    label: Hitta.se geodata
+    checkedAt: 2026-07-16
+

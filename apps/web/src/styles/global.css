@@ -196,6 +196,8 @@ h2 {
 .place-card {
   min-height: 15rem;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 1.2rem;
 }
@@ -218,6 +220,35 @@ h2 {
 .journey {
   color: var(--moss);
   font-weight: 700;
+}
+
+.place-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 0.35rem 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.72rem;
+}
+
+.sources a {
+  color: var(--ink);
+  text-underline-offset: 0.18em;
+}
+
+.sources a:hover {
+  color: var(--tomato);
 }
 
 footer {
@@ -249,4 +280,3 @@ footer {
     transform: rotate(7deg) scale(1.05);
   }
 }
-

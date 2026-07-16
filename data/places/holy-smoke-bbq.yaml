@@ -1,0 +1,29 @@
+id: holy-smoke-bbq
+name: Holy Smoke BBQ
+status: published
+categories: [restaurant]
+journeyValue: stop
+location:
+  address: Krapperups Kyrkoväg 116, 263 76 Nyhamnsläge
+  locality: Nyhamnsläge
+  region: Skåne
+  country: SE
+  coordinates:
+    longitude: 12.5439333
+    latitude: 56.2635333
+summary: Barbecue-restaurang utanför Nyhamnsläge, rekommenderad i tråden som ett stopp för amerikansk barbecue och rökt kött.
+tags: [barbecue, bbq, rökt kött]
+sources:
+  - kind: recommendation
+    url: https://www.reddit.com/r/sweden/comments/1uxul7k/comment/oxu7lvq/
+    label: Reddit-rekommendation
+    checkedAt: 2026-07-16
+  - kind: official
+    url: https://holysmokebbq.se/
+    label: Officiell webbplats
+    checkedAt: 2026-07-16
+  - kind: geodata
+    url: https://www.boatview.io/en/poi/22863/holy-smoke-bbq
+    label: BoatView geodata
+    checkedAt: 2026-07-16
+
