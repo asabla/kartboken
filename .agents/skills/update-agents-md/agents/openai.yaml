@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update AGENTS.md"
+  short_description: "Maintain concise repository agent guidance"
+  default_prompt: "Review and update Kartboken agent guidance against the current repository."

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kartboken.com/schemas/place.schema.json",
+  "title": "Kartboken place",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "status",
+    "categories",
+    "journeyValue",
+    "location",
+    "summary",
+    "sources"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "status": { "enum": ["draft", "published", "archived"] },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["restaurant", "cafe", "bakery", "bar", "farm-shop", "food-stop", "other"]
+      }
+    },
+    "journeyValue": { "enum": ["nearby", "stop", "detour", "journey"] },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locality", "region", "country", "coordinates"],
+      "properties": {
+        "locality": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "region": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "country": { "const": "SE" },
+        "coordinates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["longitude", "latitude"],
+          "properties": {
+            "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+            "latitude": { "type": "number", "minimum": -90, "maximum": 90 }
+          }
+        }
+      }
+    },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 400 },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 60 }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "label", "checkedAt"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+          "checkedAt": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  }
+}
+
