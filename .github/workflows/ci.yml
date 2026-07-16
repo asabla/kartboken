@@ -26,4 +26,4 @@ jobs:
       - run: pnpm test:fuzz
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
-
+      - run: docker build --tag kartboken:test .

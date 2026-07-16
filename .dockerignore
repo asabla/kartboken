@@ -1,0 +1,13 @@
+.git
+.github
+.agents
+.astro
+**/node_modules
+**/dist
+coverage
+docs
+playwright-report
+test-results
+tests
+.DS_Store
+
