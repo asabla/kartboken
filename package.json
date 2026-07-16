@@ -12,6 +12,7 @@
     "check": "pnpm catalog:validate && pnpm -r --if-present check",
     "test": "vitest run --exclude '**/*.fuzz.test.ts' --exclude 'tests/e2e/**'",
     "test:fuzz": "vitest run fuzz.test --exclude 'tests/e2e/**'",
+    "test:budget": "pnpm build && node tools/check-bundle-budget.mjs",
     "test:e2e": "pnpm build && playwright test",
     "catalog:validate": "pnpm --filter @kartboken/catalog-cli validate"
   },

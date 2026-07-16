@@ -2,6 +2,7 @@ import type { Place } from "../src/index.ts";
 
 export const places: Place[] = [
   {
+    schemaVersion: 1,
     id: "bjorkbackens-kafe",
     name: "Björkbackens kafé",
     status: "published",
@@ -26,6 +27,7 @@ export const places: Place[] = [
     ],
   },
   {
+    schemaVersion: 1,
     id: "sodra-bordet",
     name: "Södra bordet",
     status: "published",

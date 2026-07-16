@@ -1,3 +1,4 @@
+schemaVersion: 1
 id: vedens-lustgard
 name: Vedens Lustgård
 status: published
@@ -26,4 +27,3 @@ sources:
     url: https://www.hitta.se/v%C3%A4stra%2Bg%C3%B6talands%2Bl%C3%A4n/skara/sk%C3%A5nings%2B%C3%A5saka%2Bkarteg%C3%A5rden%2B2/omr%C3%A5de/58.426003%3A13.464316
     label: Hitta.se geodata
     checkedAt: 2026-07-16
-

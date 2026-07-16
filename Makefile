@@ -1,4 +1,4 @@
-.PHONY: setup dev build check test fuzz e2e
+.PHONY: setup dev build check test fuzz budget e2e
 
 setup:
 	pnpm install
@@ -19,6 +19,8 @@ test:
 fuzz:
 	pnpm test:fuzz
 
+budget:
+	pnpm test:budget
+
 e2e:
 	pnpm test:e2e
-

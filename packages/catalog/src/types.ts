@@ -23,6 +23,7 @@ export interface PlaceSource {
 }
 
 export interface Place {
+  schemaVersion: 1;
   id: string;
   name: string;
   status: PlaceStatus;

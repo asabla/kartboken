@@ -11,9 +11,8 @@ if (command !== "validate") {
   const root = resolve(import.meta.dirname, "../../..");
   const places = await loadCatalog({
     directory: resolve(root, "data/places"),
-    schema: resolve(root, "schemas/place.schema.json"),
+    schema: resolve(root, "schemas/place-v1.schema.json"),
     includeDrafts: true,
   });
   console.log(`Catalog is valid (${places.length} records).`);
 }
-

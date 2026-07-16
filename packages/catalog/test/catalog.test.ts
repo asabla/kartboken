@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { CatalogValidationError, loadCatalog } from "../src/index.ts";
 
 const temporaryDirectories: string[] = [];
-const schema = resolve(process.cwd(), "schemas/place.schema.json");
+const schema = resolve(process.cwd(), "schemas/place-v1.schema.json");
 
 afterEach(async () => {
   await Promise.all(temporaryDirectories.splice(0).map((directory) => rm(directory, { recursive: true })));
@@ -23,7 +23,8 @@ describe("loadCatalog", () => {
     const directory = await temporaryCatalog();
     await writeFile(
       resolve(directory, "test-place.yaml"),
-      `id: test-place
+      `schemaVersion: 1
+id: test-place
 name: Testplatsen
 status: draft
 categories: [cafe]
@@ -58,11 +59,44 @@ sources:
     );
   });
 
+  it("rejects records from an unsupported schema version", async () => {
+    const directory = await temporaryCatalog();
+    await writeFile(
+      resolve(directory, "future-place.yaml"),
+      `schemaVersion: 2
+id: future-place
+name: Future place
+status: draft
+categories: [cafe]
+journeyValue: nearby
+location:
+  address: Exempelvägen 1
+  locality: Exempelby
+  region: Dalarna
+  country: SE
+  coordinates:
+    longitude: 15.1
+    latitude: 60.4
+summary: A fictional test fixture.
+sources:
+  - kind: recommendation
+    url: https://example.com
+    label: Test source
+    checkedAt: 2026-07-16
+`,
+    );
+
+    await expect(loadCatalog({ directory, schema, includeDrafts: true })).rejects.toBeInstanceOf(
+      CatalogValidationError,
+    );
+  });
+
   it("requires recommendation and official provenance for published records", async () => {
     const directory = await temporaryCatalog();
     await writeFile(
       resolve(directory, "unverified-place.yaml"),
-      `id: unverified-place
+      `schemaVersion: 1
+id: unverified-place
 name: Unverified place
 status: published
 categories: [cafe]

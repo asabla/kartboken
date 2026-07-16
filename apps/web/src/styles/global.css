@@ -23,6 +23,23 @@ body {
     var(--paper);
 }
 
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 100vw;
+  color: var(--paper);
+  background: var(--ink);
+  font-family: system-ui, sans-serif;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-header,
 main,
 footer {
@@ -301,10 +318,6 @@ a:focus-visible {
   border: 1px solid var(--line);
   border-radius: 1.2rem;
   background: rgb(255 252 245 / 28%);
-  transition:
-    border-color 160ms ease,
-    background-color 160ms ease,
-    transform 160ms ease;
 }
 
 .place-card.place-selected {
@@ -443,5 +456,12 @@ footer {
 
   .brand:hover .brand-mark {
     transform: rotate(7deg) scale(1.05);
+  }
+
+  .place-card {
+    transition:
+      border-color 160ms ease,
+      background-color 160ms ease,
+      transform 160ms ease;
   }
 }

@@ -20,11 +20,12 @@ pnpm catalog:validate  # validate every YAML place record
 pnpm check             # catalog, TypeScript, Astro, and Svelte checks
 pnpm test              # deterministic unit and search-quality tests
 pnpm test:fuzz         # property-based fuzzy tests
+pnpm test:budget       # production build and browser-asset budgets
 pnpm test:e2e          # production build and Playwright tests
 pnpm build             # static production build
 ```
 
-The same commands are available as `make check`, `make test`, `make fuzz`, `make e2e`, and `make build`.
+The same commands are available as `make check`, `make test`, `make fuzz`, `make budget`, `make e2e`, and `make build`.
 
 ## Architecture
 
@@ -32,7 +33,7 @@ The same commands are available as `make check`, `make test`, `make fuzz`, `make
 - `data/places` is the reviewed, version-controlled source of truth.
 - `packages/catalog` validates and searches catalog records.
 - `tools/catalog-cli` contains manual catalog workflows.
-- `schemas/place.schema.json` defines the public place-record contract.
+- `schemas/place-v1.schema.json` defines the versioned public place-record contract.
 
 There is no runtime database, account system, administration interface, or application API. Scraping and research stay outside the deployed site; only reviewed facts and source references enter the catalog.
 
@@ -47,5 +48,7 @@ docker compose up --build
 ```
 
 See [docs/deployment.md](docs/deployment.md) for static-host caching, container operation, and map-hosting choices.
+
+See [docs/catalog.md](docs/catalog.md) for the reviewed catalog workflow and editorial taxonomy.
 
 Repository guidance for coding agents lives in [AGENTS.md](AGENTS.md), with focused workflows under `.agents/skills`.
