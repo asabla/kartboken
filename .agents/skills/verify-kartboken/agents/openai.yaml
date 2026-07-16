@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Kartboken"
+  short_description: "Run focused Kartboken verification checks"
+  default_prompt: "Select and run the checks required for the current Kartboken change."

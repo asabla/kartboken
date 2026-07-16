@@ -1,0 +1,17 @@
+{
+  "name": "@kartboken/catalog-cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "validate": "node src/index.ts validate"
+  },
+  "dependencies": {
+    "@kartboken/catalog": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^6.0.0"
+  }
+}

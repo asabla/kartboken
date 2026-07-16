@@ -1,0 +1,22 @@
+{
+  "name": "@kartboken/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --host 127.0.0.1",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^9.0.1",
+    "@kartboken/catalog": "workspace:*",
+    "astro": "^7.0.9",
+    "svelte": "^5.56.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.0"
+  }
+}

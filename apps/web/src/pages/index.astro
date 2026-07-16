@@ -1,0 +1,51 @@
+---
+import { loadCatalog } from "@kartboken/catalog";
+import { resolve } from "node:path";
+import PlaceExplorer from "../components/PlaceExplorer.svelte";
+import "../styles/global.css";
+
+const repositoryRoot = resolve(process.cwd(), "../..");
+const places = await loadCatalog({
+  directory: resolve(repositoryRoot, "data/places"),
+  schema: resolve(repositoryRoot, "schemas/place.schema.json"),
+});
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Kartboken samlar restauranger, kaféer och matstopp som är värda vägen dit."
+    />
+    <title>Kartboken — platser värda vägen dit</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Kartboken, startsida">
+        <span aria-hidden="true" class="brand-mark">K</span>
+        <span>Kartboken</span>
+      </a>
+      <p>Platser värda vägen dit</p>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">En handplockad smakresa genom Sverige</p>
+        <h1 id="hero-title">Hitta nästa<br /><em>omväg.</em></h1>
+        <p class="hero-copy">
+          Restauranger, kaféer och matstopp som någon faktiskt tycker är värda resan.
+          Inga topplistor. Bara berättelser med en plats på kartan.
+        </p>
+      </section>
+
+      <PlaceExplorer client:load {places} />
+    </main>
+
+    <footer>
+      <p>Kartboken är under uppbyggnad. Katalogen granskas för hand.</p>
+    </footer>
+  </body>
+</html>

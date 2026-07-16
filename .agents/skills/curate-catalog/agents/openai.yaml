@@ -1,0 +1,4 @@
+interface:
+  display_name: "Curate Catalog"
+  short_description: "Add and verify Kartboken place records"
+  default_prompt: "Curate source-backed Kartboken place records and validate the catalog."
