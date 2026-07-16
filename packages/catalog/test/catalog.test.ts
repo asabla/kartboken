@@ -29,6 +29,7 @@ status: draft
 categories: [cafe]
 journeyValue: nearby
 location:
+  address: Exempelvägen 1
   locality: Exempelby
   region: Dalarna
   country: SE
@@ -37,7 +38,8 @@ location:
     latitude: 60.4
 summary: A fictional test fixture.
 sources:
-  - url: https://example.com
+  - kind: recommendation
+    url: https://example.com
     label: Test source
     checkedAt: 2026-07-16
 `,
@@ -55,5 +57,33 @@ sources:
       CatalogValidationError,
     );
   });
-});
 
+  it("requires recommendation and official provenance for published records", async () => {
+    const directory = await temporaryCatalog();
+    await writeFile(
+      resolve(directory, "unverified-place.yaml"),
+      `id: unverified-place
+name: Unverified place
+status: published
+categories: [cafe]
+journeyValue: nearby
+location:
+  address: Exempelvägen 1
+  locality: Exempelby
+  region: Dalarna
+  country: SE
+  coordinates:
+    longitude: 15.1
+    latitude: 60.4
+summary: A fictional test fixture.
+sources:
+  - kind: recommendation
+    url: https://example.com
+    label: Test source
+    checkedAt: 2026-07-16
+`,
+    );
+
+    await expect(loadCatalog({ directory, schema })).rejects.toBeInstanceOf(CatalogValidationError);
+  });
+});

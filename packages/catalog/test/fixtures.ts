@@ -8,6 +8,7 @@ export const places: Place[] = [
     categories: ["cafe", "bakery"],
     journeyValue: "detour",
     location: {
+      address: "Exempelvägen 1",
       locality: "Exempelby",
       region: "Dalarna",
       country: "SE",
@@ -15,7 +16,14 @@ export const places: Place[] = [
     },
     summary: "A fictional fixture used only in automated tests.",
     tags: ["surdeg", "fika"],
-    sources: [{ url: "https://example.com", label: "Test source", checkedAt: "2026-07-16" }],
+    sources: [
+      {
+        kind: "recommendation",
+        url: "https://example.com",
+        label: "Test source",
+        checkedAt: "2026-07-16",
+      },
+    ],
   },
   {
     id: "sodra-bordet",
@@ -24,6 +32,7 @@ export const places: Place[] = [
     categories: ["restaurant"],
     journeyValue: "stop",
     location: {
+      address: "Provgränden 2",
       locality: "Provstad",
       region: "Skåne",
       country: "SE",
@@ -31,6 +40,13 @@ export const places: Place[] = [
     },
     summary: "A second fictional fixture used only in automated tests.",
     tags: ["middag"],
-    sources: [{ url: "https://example.org", label: "Test source", checkedAt: "2026-07-16" }],
+    sources: [
+      {
+        kind: "recommendation",
+        url: "https://example.org",
+        label: "Test source",
+        checkedAt: "2026-07-16",
+      },
+    ],
   },
 ];

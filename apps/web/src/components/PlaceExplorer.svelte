@@ -5,6 +5,23 @@
   let { places }: { places: Place[] } = $props();
   let query = $state("");
   const results = $derived(searchPlaces(places, query));
+
+  const categoryLabels: Record<Place["categories"][number], string> = {
+    restaurant: "restaurang",
+    cafe: "kafé",
+    bakery: "bageri",
+    bar: "bar",
+    "farm-shop": "gårdsbutik",
+    "food-stop": "matstopp",
+    other: "annat",
+  };
+
+  const journeyLabels: Record<Place["journeyValue"], string> = {
+    nearby: "i närheten",
+    stop: "värt ett stopp",
+    detour: "värt en omväg",
+    journey: "värt en resa",
+  };
 </script>
 
 <section class="explorer" aria-labelledby="explorer-title">
@@ -34,10 +51,21 @@
       {#each results as { place } (place.id)}
         <li>
           <article class="place-card">
-            <p class="place-meta">{place.location.locality} · {place.categories.join(" / ")}</p>
+            <p class="place-meta">
+              {place.location.locality} · {place.categories.map((category) => categoryLabels[category]).join(" / ")}
+            </p>
             <h3>{place.name}</h3>
             <p>{place.summary}</p>
-            <span class="journey">{place.journeyValue}</span>
+            <div class="place-footer">
+              <span class="journey">{journeyLabels[place.journeyValue]}</span>
+              <ul class="sources" aria-label={`Källor för ${place.name}`}>
+                {#each place.sources as source}
+                  <li>
+                    <a href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
+                  </li>
+                {/each}
+              </ul>
+            </div>
           </article>
         </li>
       {/each}

@@ -49,6 +49,8 @@ function searchWords(place: Place): string[] {
   return normalizeSearchText(
     [
       place.name,
+      place.summary,
+      place.location.address,
       place.location.locality,
       place.location.region,
       ...place.categories,
