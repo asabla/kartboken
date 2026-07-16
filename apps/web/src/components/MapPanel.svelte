@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { GeoJSONSource, Map as MapInstance } from "maplibre-gl";
+  import mapStylesheetUrl from "maplibre-gl/dist/maplibre-gl.css?url";
   import { onMount } from "svelte";
 
   import type { Place } from "@kartboken/catalog/types";
@@ -15,6 +16,29 @@
   let container: HTMLDivElement;
   let map: MapInstance | undefined;
   let status = $state<"waiting" | "loading" | "ready" | "error">("waiting");
+
+  function loadMapStylesheet(): Promise<void> {
+    const existing = document.querySelector<HTMLLinkElement>("link[data-maplibre-styles]");
+    if (existing?.sheet) return Promise.resolve();
+
+    const link = existing ?? document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = mapStylesheetUrl;
+    link.dataset.maplibreStyles = "";
+    if (!existing) document.head.append(link);
+
+    return new Promise((resolve, reject) => {
+      link.addEventListener("load", () => resolve(), { once: true });
+      link.addEventListener(
+        "error",
+        () => {
+          link.remove();
+          reject(new Error("Map stylesheet failed to load"));
+        },
+        { once: true },
+      );
+    });
+  }
 
   const collection = $derived({
     type: "FeatureCollection" as const,
@@ -58,10 +82,7 @@
     status = "loading";
 
     try {
-      const [mapModule] = await Promise.all([
-        import("maplibre-gl"),
-        import("maplibre-gl/dist/maplibre-gl.css"),
-      ]);
+      const [mapModule] = await Promise.all([import("maplibre-gl"), loadMapStylesheet()]);
       map = new mapModule.Map({
         container,
         style: styleUrl,
