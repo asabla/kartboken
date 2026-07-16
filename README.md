@@ -2,6 +2,8 @@
 
 Kartboken is a map-first guide to restaurants, cafés, and places worth a stop or a journey. The application is public, static, and built from a manually reviewed catalog so it can run with very little infrastructure.
 
+Current release: **v1.0.0**. See [CHANGELOG.md](CHANGELOG.md) for the release contents.
+
 ## Start locally
 
 Requirements: Node.js 24 or newer and pnpm 11.

@@ -1,5 +1,7 @@
 # Kartboken v1.0
 
+Status: release candidate complete.
+
 Version 1.0 is a useful public map, not the end of the product. It proves that a small, static, source-backed catalog can support enjoyable discovery without accounts or runtime services.
 
 ## Acceptance boundary
@@ -20,4 +22,3 @@ Version 1.0 is a useful public map, not the end of the product. It proves that a
 - Automatically scraped or automatically published records.
 - Live opening hours, ratings, price levels, and availability.
 - A runtime database, application API, or background worker.
-
