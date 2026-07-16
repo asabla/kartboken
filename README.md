@@ -36,5 +36,16 @@ The same commands are available as `make check`, `make test`, `make fuzz`, `make
 
 There is no runtime database, account system, administration interface, or application API. Scraping and research stay outside the deployed site; only reviewed facts and source references enter the catalog.
 
-Repository guidance for coding agents lives in [AGENTS.md](AGENTS.md), with focused workflows under `.agents/skills`.
+The map uses OpenFreeMap's public Positron style by default. Set `PUBLIC_MAP_STYLE_URL` while building to use another MapLibre-compatible style, including a self-hosted one.
 
+## Deploy
+
+The output in `apps/web/dist` can be published to any static host. A hardened Caddy container and Compose service are also included:
+
+```sh
+docker compose up --build
+```
+
+See [docs/deployment.md](docs/deployment.md) for static-host caching, container operation, and map-hosting choices.
+
+Repository guidance for coding agents lives in [AGENTS.md](AGENTS.md), with focused workflows under `.agents/skills`.

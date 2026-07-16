@@ -10,6 +10,8 @@ This file contains durable guidance for agents working in Kartboken. Keep it con
 - `data/places`: reviewed place records; one YAML file per stable place ID.
 - `schemas`: versioned data contracts.
 - `tests/e2e`: Playwright tests against the production build.
+- `docs`: product boundaries and operational guidance.
+- `Dockerfile`, `Caddyfile`, and `compose.yaml`: optional static-site container deployment.
 - `.agents/skills`: focused maintenance workflows for agents.
 
 ## Invariants
@@ -47,4 +49,3 @@ Never claim a check was run if it was not. Explain environmental blockers and re
 - Use `.agents/skills/curate-catalog/SKILL.md` when adding, reviewing, or changing place data, provenance, taxonomy, or ingestion behavior.
 - Use `.agents/skills/verify-kartboken/SKILL.md` to select and run proportionate checks.
 - Use `.agents/skills/update-agents-md/SKILL.md` when repository structure or durable agent guidance changes.
-
