@@ -132,7 +132,9 @@ h2 {
   line-height: 0.95;
 }
 
-.search {
+.filters,
+.search,
+.filter-row label {
   display: grid;
   gap: 0.55rem;
   font-family: system-ui, sans-serif;
@@ -140,7 +142,21 @@ h2 {
   font-weight: 650;
 }
 
-.search input {
+.filters {
+  gap: 1rem;
+}
+
+.filter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.search input,
+.filter-row select,
+.reset,
+.map-error button {
   width: 100%;
   padding: 1rem 1.1rem;
   border: 1px solid var(--ink);
@@ -148,12 +164,96 @@ h2 {
   font: inherit;
   font-weight: 400;
   color: var(--ink);
-  background: transparent;
+  background: rgb(255 252 245 / 72%);
 }
 
-.search input:focus-visible {
+.filter-row select {
+  min-width: 0;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15rem) calc(50% - 0.1rem),
+    calc(100% - 0.85rem) calc(50% - 0.1rem);
+  background-repeat: no-repeat;
+  background-size: 0.3rem 0.3rem;
+  padding-right: 2.2rem;
+}
+
+.reset,
+.map-error button {
+  width: auto;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.reset:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
   outline: 3px solid var(--tomato);
   outline-offset: 3px;
+}
+
+.browse-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+  margin-top: 3rem;
+}
+
+.map-shell {
+  position: sticky;
+  top: 1rem;
+  min-height: min(43rem, calc(100vh - 2rem));
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  background:
+    radial-gradient(circle at 75% 28%, rgb(217 85 63 / 18%), transparent 9rem),
+    var(--paper-deep);
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+}
+
+.map-status {
+  position: absolute;
+  inset: 1rem;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  margin: 0;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+}
+
+.map-error {
+  gap: 0.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: rgb(243 237 223 / 92%);
+}
+
+.map-error button {
+  justify-self: center;
+  margin-top: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.results-panel {
+  min-width: 0;
 }
 
 .empty-state {
@@ -186,7 +286,7 @@ h2 {
 
 .place-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   padding: 0;
   margin: 2rem 0 0;
@@ -200,6 +300,17 @@ h2 {
   flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 1.2rem;
+  background: rgb(255 252 245 / 28%);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.place-card.place-selected {
+  border-color: var(--tomato);
+  background: rgb(217 85 63 / 8%);
+  transform: translateX(-0.35rem);
 }
 
 .place-card h3 {
@@ -207,6 +318,24 @@ h2 {
   font-family: Georgia, serif;
   font-size: 1.8rem;
   font-weight: 400;
+}
+
+.place-card h3 button {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.15em;
+}
+
+.place-card h3 button:hover {
+  color: var(--tomato);
+  text-decoration-color: currentColor;
 }
 
 .place-meta,
@@ -257,13 +386,49 @@ footer {
   font-size: 0.8rem;
 }
 
+.maplibregl-ctrl-group,
+.maplibregl-ctrl-attrib {
+  font-family: system-ui, sans-serif;
+}
+
+.maplibregl-ctrl-group:not(:empty) {
+  box-shadow: none;
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 940px) {
+  .explorer-heading,
+  .browse-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map-shell {
+    position: relative;
+    top: auto;
+    min-height: min(35rem, 68vh);
+  }
+
+  .place-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+}
+
 @media (max-width: 700px) {
   .site-header p {
     display: none;
   }
 
-  .explorer-heading {
+  .explorer {
+    padding: 1.25rem;
+    border-radius: 1.25rem 1.25rem 0.4rem 0.4rem;
+  }
+
+  .filter-row {
     grid-template-columns: 1fr;
+  }
+
+  .reset {
+    width: 100%;
   }
 
   .hero-copy {
