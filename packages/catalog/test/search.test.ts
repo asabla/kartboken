@@ -19,6 +19,11 @@ describe("searchPlaces", () => {
     expect(searchPlaces(places, "restaurant skane")[0]?.place.id).toBe("sodra-bordet");
   });
 
+  it("finds address and summary text", () => {
+    expect(searchPlaces(places, "exempelvagen")[0]?.place.id).toBe("bjorkbackens-kafe");
+    expect(searchPlaces(places, "second fictional")[0]?.place.id).toBe("sodra-bordet");
+  });
+
   it("uses a stable alphabetical order for an empty query", () => {
     expect(searchPlaces(places, "").map((result) => result.place.id)).toEqual([
       "bjorkbackens-kafe",

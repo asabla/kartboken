@@ -9,6 +9,7 @@ const places = await loadCatalog({
   directory: resolve(repositoryRoot, "data/places"),
   schema: resolve(repositoryRoot, "schemas/place.schema.json"),
 });
+const mapStyleUrl = import.meta.env.PUBLIC_MAP_STYLE_URL ?? "https://tiles.openfreemap.org/styles/positron";
 ---
 
 <!doctype html>
@@ -41,7 +42,7 @@ const places = await loadCatalog({
         </p>
       </section>
 
-      <PlaceExplorer client:load {places} />
+      <PlaceExplorer client:load {places} {mapStyleUrl} />
     </main>
 
     <footer>
