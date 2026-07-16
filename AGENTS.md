@@ -39,6 +39,7 @@ Run the narrowest relevant check while iterating, then the appropriate baseline 
 - `pnpm check`: catalog validation and static type/framework checks.
 - `pnpm test`: deterministic unit and search-quality tests.
 - `pnpm test:fuzz`: property-based tests for normalization and fuzzy search.
+- `pnpm test:budget`: static build and browser-asset budgets.
 - `pnpm test:e2e`: production build and browser-level behavior.
 - `pnpm build`: static deployable output.
 

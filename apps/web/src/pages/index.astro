@@ -7,7 +7,7 @@ import "../styles/global.css";
 const repositoryRoot = resolve(process.cwd(), "../..");
 const places = await loadCatalog({
   directory: resolve(repositoryRoot, "data/places"),
-  schema: resolve(repositoryRoot, "schemas/place.schema.json"),
+  schema: resolve(repositoryRoot, "schemas/place-v1.schema.json"),
 });
 const mapStyleUrl = import.meta.env.PUBLIC_MAP_STYLE_URL ?? "https://tiles.openfreemap.org/styles/positron";
 ---
@@ -17,13 +17,29 @@ const mapStyleUrl = import.meta.env.PUBLIC_MAP_STYLE_URL ?? "https://tiles.openf
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#d9553f" />
     <meta
       name="description"
       content="Kartboken samlar restauranger, kaféer och matstopp som är värda vägen dit."
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:site_name" content="Kartboken" />
+    <meta property="og:title" content="Kartboken — platser värda vägen dit" />
+    <meta
+      property="og:description"
+      content="Handplockade restauranger, kaféer och matstopp som är värda resan."
+    />
+    <meta property="og:url" content="https://kartboken.com/" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://kartboken.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <noscript><style>.map-shell { display: none; }</style></noscript>
     <title>Kartboken — platser värda vägen dit</title>
   </head>
   <body>
+    <a class="skip-link" href="#catalog">Hoppa till katalogen</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Kartboken, startsida">
         <span aria-hidden="true" class="brand-mark">K</span>
@@ -42,7 +58,9 @@ const mapStyleUrl = import.meta.env.PUBLIC_MAP_STYLE_URL ?? "https://tiles.openf
         </p>
       </section>
 
-      <PlaceExplorer client:load {places} {mapStyleUrl} />
+      <div id="catalog" tabindex="-1">
+        <PlaceExplorer client:load {places} {mapStyleUrl} />
+      </div>
     </main>
 
     <footer>

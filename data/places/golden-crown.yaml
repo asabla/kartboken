@@ -1,3 +1,4 @@
+schemaVersion: 1
 id: golden-crown
 name: Golden Crown
 status: published
@@ -26,4 +27,3 @@ sources:
     url: https://www.hitta.se/omr%C3%A5de/55.508464241367626%3A13.236533363984595
     label: Hitta.se geodata
     checkedAt: 2026-07-16
-

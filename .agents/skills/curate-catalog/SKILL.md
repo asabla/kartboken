@@ -9,7 +9,7 @@ Use this workflow whenever work changes place data or the rules that turn resear
 
 ## Workflow
 
-1. Inspect `schemas/place.schema.json`, the target record, and similar records before editing.
+1. Inspect `schemas/place-v1.schema.json`, the target record, and similar records before editing.
 2. Resolve a stable, human-readable ID. Never reuse an ID for a different real-world place.
 3. Record facts conservatively. Coordinates, locality, category, journey value, and descriptive claims must be supported by a listed source.
 4. Paraphrase source material. Do not copy reviews or scraped page text into the public catalog.
@@ -26,4 +26,3 @@ Use this workflow whenever work changes place data or the rules that turn resear
 - Schema changes require fixtures and tests for both accepted and rejected records.
 
 If sources disagree, preserve the disagreement in research outside the published description and choose the more conservative public claim.
-

@@ -1,3 +1,4 @@
+schemaVersion: 1
 id: holy-smoke-bbq
 name: Holy Smoke BBQ
 status: published
@@ -26,4 +27,3 @@ sources:
     url: https://www.boatview.io/en/poi/22863/holy-smoke-bbq
     label: BoatView geodata
     checkedAt: 2026-07-16
-

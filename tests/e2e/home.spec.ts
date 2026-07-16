@@ -35,3 +35,15 @@ test("restores shared filter state from the URL", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Lilla Napoli" })).toBeVisible();
   await expect(page.locator("#place-lilla-napoli article")).toHaveClass(/place-selected/);
 });
+
+test("keeps the reviewed catalog readable without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { level: 2, name: "5 handplockade platser" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Lilla Napoli" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Karta över rekommenderade platser" })).toBeHidden();
+
+  await context.close();
+});

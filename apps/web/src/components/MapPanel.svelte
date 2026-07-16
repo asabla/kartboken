@@ -71,7 +71,11 @@
         [Math.min(...longitudes), Math.min(...latitudes)],
         [Math.max(...longitudes), Math.max(...latitudes)],
       ],
-      { padding: 70, maxZoom: 11, duration: 500 },
+      {
+        padding: 70,
+        maxZoom: 11,
+        duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500,
+      },
     );
   }
 
@@ -148,7 +152,9 @@
           const source = map?.getSource("places") as GeoJSONSource | undefined;
           const zoom = await source?.getClusterExpansionZoom(clusterId);
           if (zoom !== undefined && feature.geometry.type === "Point") {
-            map?.easeTo({ center: feature.geometry.coordinates as [number, number], zoom });
+            const camera = { center: feature.geometry.coordinates as [number, number], zoom };
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) map?.jumpTo(camera);
+            else map?.easeTo(camera);
           }
         });
         for (const layer of ["place-points", "place-clusters"]) {
@@ -200,10 +206,12 @@
   $effect(() => {
     const selected = places.find((place) => place.id === selectedId);
     if (status === "ready" && map && selected) {
-      map.easeTo({
+      const camera = {
         center: [selected.location.coordinates.longitude, selected.location.coordinates.latitude],
         zoom: Math.max(map.getZoom(), 9),
-      });
+      } as const;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) map.jumpTo(camera);
+      else map.easeTo(camera);
     }
   });
 </script>

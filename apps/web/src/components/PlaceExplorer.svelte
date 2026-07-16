@@ -43,7 +43,10 @@
   function selectPlace(id: string): void {
     selectedId = id;
     requestAnimationFrame(() => {
-      document.getElementById(`place-${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document
+        .getElementById(`place-${id}`)
+        ?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "nearest" });
     });
   }
 
@@ -169,4 +172,3 @@
     </div>
   {/if}
 </section>
-
